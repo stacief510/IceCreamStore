@@ -14,6 +14,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/api', controllers.api.index);
+app.get('/api/icecreams', controllers.icecream.index);
 
 
 app.listen(3000);

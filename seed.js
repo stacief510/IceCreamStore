@@ -36,5 +36,17 @@ var iceCreamFlavors = [
 	 
 },
 
-
 ];
+
+db.IceCream.remove({}, function(err, icecreams){
+	db.IceCream.create(iceCreamFlavors, function(err, icecream){
+		if(err){
+			console.log(err);
+		}
+
+	console.log("ice cream flavors", icecream);
+	console.log("created", icecream.length, "ice creams");
+	process.exit();
+
+	});
+});
