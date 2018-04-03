@@ -1,0 +1,9 @@
+body{
+	background-color: pink;
+}
+.pickCookie, .pickIceCream{
+	margin:50px;
+}
+.form{
+border: black solid 1px;
+}

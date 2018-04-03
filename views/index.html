@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ice Cream Shop</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- CUSTOMIZED SCRIPTS -->
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="scripts/app.js"></script>
+
+</head>
+<body>
+	<header>
+	<h1>Stagha Creamery</h1>
+	<p>Get creative with your Ice Cream</p>
+	<button>Order</button>
+	</header>
+
+	<div class='container choices'>
+		<div class="row">
+			<div class="col-lg-6 icecreams">
+				<h3>Ice Cream Flavors</h3>
+				<ul>
+					<li>Vanilla</li>
+					<li>Chocolate</li>
+					<li>Chocolate Chip</li>
+					<li>Cookie Dough</li>
+					<li>Strawberry</li>
+					<li>Pistachio</li>
+				</ul>
+			</div>
+			<div class="col-lg-6 bases">
+				<h3>Cookies</h3>
+				<ul>
+					<li>Chocolate Chip</li>
+					<li>Snikerdoodle</li>
+					<li>Double Chocolate Chip</li>
+					<li>Oatmeal Raisin</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+<div class='container form'>
+		<div class="row">
+			<div class="col-lg-12">
+				<legend>Place Your Order</legend>
+				<!-- option -->
+				  <div class="form-group">
+		             <label class="col-md-4 control-label" for="name">Name</label>
+		              <div class="col-md-4">
+		              <input id="name" name="name" type="text" placeholder="Your Name" class="form-control input-md" required>
+		              </div>
+		            </div>
+
+				<div class="dropdown">
+				  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				    Choose Your Ice Cream Flavor
+				  </button>
+				  <div class="dropdown-menu pickIceCream" aria-labelledby="dropdownMenuButton">
+				    <a class="dropdown-item" href="#">vanilla</a>
+				    <a class="dropdown-item" href="#">choco</a>
+				    <a class="dropdown-item" href="#">chocochip</a>
+				    <a class="dropdown-item" href="#">cookiedough</a>
+				    <a class="dropdown-item" href="#">strawberry</a>
+				    <a class="dropdown-item" href="#">pistachio</a>
+				  </div>
+				</div>
+
+				<!-- option -->
+				<div class="dropdown">
+				  <button class="btn btn-secondary dropdown-toggle pickCookie" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				    Choose Your Cookie Flavor
+				  </button>
+				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				    <a class="dropdown-item" href="#">chocochip</a>
+				    <a class="dropdown-item" href="#">sniker</a>
+				    <a class="dropdown-item" href="#">doubchocchip</a>
+				   	<a class="dropdown-item" href="#">oatmeal</a>
+				  </div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>
