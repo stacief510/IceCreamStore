@@ -15,6 +15,8 @@ app.get('/', function(req, res){
 
 app.get('/api', controllers.api.index);
 app.get('/api/icecreams', controllers.icecream.index);
+app.get('/api/cookies', controllers.cookie.index);
+
 
 
 app.listen(3000);

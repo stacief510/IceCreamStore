@@ -1,12 +1,11 @@
 var db = require('../models');
-
 function index(req, res){
 
-db.IceCream.find({}, function(err, icecream){
+db.Cookie.find({}, function(err, cookie){
 	if(err){
 		res.send(err);
 	}
-	res.json(icecream);
+	res.json(cookie);
 })
 
 }

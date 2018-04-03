@@ -38,10 +38,46 @@ var iceCreamFlavors = [
 
 ];
 
+var cookieType = [
+ {
+ 	flavor: "Chocolate Chip",
+ 	allergies: "gluten, eggs, dairy"
+ },
+
+ {
+ 	flavor: "Snickerdoodle",
+ 	allergies: "gluten, eggs, dairy"
+ },
+
+ {
+ 	flavor: "Double Chocolate Chip", 
+ 	allergies: "gluten, eggs, dairy"
+ },
+
+ {
+ 	flavor: "Oatmeal Raisin",
+ 	allergies: "gluten, eggs, dairy"
+ }
+
+];
+
+db.Cookie.remove({}, function(err, cookie){
+	db.Cookie.create(cookieType, function(err, cookies){
+		if(err){
+			console.log("cookie ", err);
+		}
+
+	console.log("cookies", cookies);
+	console.log("created", cookies.length, "cookies");
+
+	})
+
+})
+
 db.IceCream.remove({}, function(err, icecreams){
 	db.IceCream.create(iceCreamFlavors, function(err, icecream){
 		if(err){
-			console.log(err);
+			console.log("ice cream", err);
 		}
 
 	console.log("ice cream flavors", icecream);
