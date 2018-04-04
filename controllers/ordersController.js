@@ -12,12 +12,18 @@ db.Order.find({}, function(err, order){
 }
 
 function create(req, res){
-console.log('888888888', req.body);
-db.Order.create(req.body, function(err, order){
-	if(err){
-		res.status(500).send(err);
-	}
-	res.json(order);
+db.IceCream.findOne({flavor:req.body.icecream}, function(err, foundIcecream){
+	db.Cookie.findOne({flavor: req.body.cookie}, function(err, foundCookie){
+		console.log(foundIcecream);
+		console.log(foundCookie);
+		console.log(req.body);
+		db.Order.create({name: req.body.name, cookie: foundCookie, icecream: foundIcecream }, function(err, order){
+			if(err){
+				console.log(err);
+			}
+			res.json(order);
+		})
+	})
 })
 
 }

@@ -6,7 +6,7 @@ var Cookie = require('./cookie.js');
 
 var OrderSchema = new Schema ({
 	name: String,
-	cookie:Cookie.schema,
+	cookie: Cookie.schema,
 	icecream: IceCream.schema
 });
 
