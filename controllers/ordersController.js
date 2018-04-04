@@ -1,7 +1,6 @@
 var db = require('../models');
 
 function index(req, res){
-
 db.Order.find({}, function(err, order){
 	if(err){
 		res.send(err);
@@ -29,6 +28,13 @@ db.IceCream.findOne({flavor:req.body.icecream}, function(err, foundIcecream){
 }
 
 function destroy(req, res){
+
+db.Order.findOneAndRemove({}, function(err, orderFound){
+	if(err){
+		console.log(err);
+	}
+	res.json()
+})
 
 }
 
