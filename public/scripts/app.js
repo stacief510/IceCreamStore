@@ -19,6 +19,21 @@ $.ajax({
 	error: handleError
 })
 
+$('.form').on("submit", function(event){
+	event.preventDefault();
+	var formData = $(this).serialize();
+	console.log(formData);
+	this.reset();
+
+	$.ajax({
+		method: 'POST',
+		url: '/api/orders',
+		data: formData,
+		success: postSuccess,
+		error: handleError
+	})
+})
+
 });
 
 function handleSuccess(allMyIcecreams){
@@ -38,6 +53,11 @@ $(".pickCookie").append(`<option>${cookies.flavor}</option>`)
 
 }
 
+function postSuccess(allData){
+
+	console.log("order created!", allData);
+
+}
 
 function handleError(err){
 	console.log(err);

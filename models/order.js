@@ -6,8 +6,8 @@ var Cookie = require('./cookie.js');
 
 var OrderSchema = new Schema ({
 	name: String,
-	cookie:[Cookie.schema],
-	icecream: [IceCream.schema]
+	cookie:Cookie.schema,
+	icecream: IceCream.schema
 });
 
 var Order = mongoose.model('Order', OrderSchema);

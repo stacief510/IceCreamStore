@@ -9,14 +9,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', function(req, res){
 	res.sendFile('views/index.html', {root: __dirname});
-	console.log('Eat Ice Cream');
 
 });
 
 app.get('/api', controllers.api.index);
 app.get('/api/icecreams', controllers.icecream.index);
 app.get('/api/cookies', controllers.cookie.index);
-
+app.get('/api/orders', controllers.order.index);
+app.post('/api/orders', controllers.order.create);
 
 
 app.listen(3000);
