@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/IceCreamStore');
+// mongoose.connect('mongodb://localhost/IceCreamStore');
+mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/IceCreamStore" );
 
 module.exports.Cookie = require('./cookie.js');
 module.exports.IceCream = require('./icecream.js');
