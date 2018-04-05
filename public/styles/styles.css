@@ -1,9 +1,60 @@
 body{
-	background-color: pink;
+	font-family:'Sintony', sans-serif, Arial;
+	font-weight: 600;
+	/*background-color: #E4EBF7;*/
+	color: #8E5B96;
+	background-color: #ffffff;
+	background-image: url("../images/icecreamo.jpg");
+	background-size: cover;
+
 }
-.pickCookie, .pickIceCream{
-	margin:50px;
+h1{
+	font-family: "Londrina Solid", sans-serif, Arial;
+	font-size: 4rem;
+	letter-spacing: 1rem;
+	text-shadow: 2px 2px #C2BBE8;
 }
-.form{
-border: black solid 1px;
+h3{
+	font-family: "Londrina Solid", sans-serif, Arial;
+	font-size: 2rem;
+	text-shadow: 2px 2px #C2BBE8;
 }
+.lead{
+	font-size: 2rem;
+	font-weight: bold;
+	text-shadow: 2px 2px #C2BBE8;
+}
+li{
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+
+.formField{
+	border: 1px black solid;
+    padding: 15px;
+    background-color: rgba(182, 162, 107, .3);
+}
+form, legend{
+	margin-left: 20%;
+}
+select, input{
+	width:75%;
+	background-color: #fff;
+	margin:10px;
+}
+.form-control{
+	width:75%;
+}
+#submitButton{
+	background-color: #8E5B96;
+	border-color: #8E5B96;
+	margin-left: 1%;
+}
+.jumbotron{
+	background-image: url('../images/icecreamsammies.jpg');
+	background-size: cover; 
+	text-align: center;
+	height:300px;
+	margin-bottom: 0;
+}
+
