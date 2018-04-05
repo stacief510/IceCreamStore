@@ -29,13 +29,11 @@ db.IceCream.findOne({flavor:req.body.icecream}, function(err, foundIcecream){
 
 function destroy(req, res){
 
-db.Order.findOneAndRemove({}, function(err, orderFound){
+db.Order.findByIdAndRemove({}, function(err, orderFound){
 	if(err){
 		console.log(err);
 	}
-	res.json()
 })
-
 }
 
 function update(req, res){

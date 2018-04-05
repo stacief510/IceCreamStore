@@ -32,15 +32,19 @@ $('#form').on("submit", function(event){
 		success: postSuccess,
 		error: handleError
 	});
-
 });
 
 
-$.ajax({
-	method: 'GET',
-	url: '/api/orders',
-	success: getOrderSuccess,
-	error: handleError
+ $('#placedOrders').on("click", function(event){
+	   var id = event.target.dataset.id;
+		$(event.target.parentElement).remove()
+
+	$.ajax({
+		method: 'GET',
+		url: '/api/orders',
+		success: getOrderSuccess,
+		error: handleError
+	});
 });
 
 
@@ -52,7 +56,6 @@ function handleSuccess(allMyIcecreams){
 
 allMyIcecreams.forEach(function(icecreams){
 $('.pickIceCream').append(`<option>${icecreams.flavor}</option>`);
-
 });
 
 }
@@ -61,14 +64,13 @@ function handleSucc(allMyCookies){
 
 allMyCookies.forEach(function(cookies){
 $(".pickCookie").append(`<option>${cookies.flavor}</option>`)
-})
+});
 }
-
 function postSuccess(newOrder){
 	//alert(`Success! Order placed: ${formData.icecream.flavor} ice cream with ${formData.cookie.flavor} cookies`);
-	$('#placedOrders').append(`<li>${newOrder.name} ordered a ${newOrder.cookie.flavor} cookie sandwich with ${newOrder.icecream.flavor} ice cream!</li> 
-				<button data.id="${newOrder._id}" name="submitButton" class="btn ">Delete</button>
-				<button data.id="${newOrder._id}" name="submitButton" class="btn ">Edit</button>`);
+	$('#placedOrders').append(`<div data-id="${newOrder._id}"><li>${newOrder.name} ordered a ${newOrder.cookie.flavor} cookie sandwich with ${newOrder.icecream.flavor} ice cream!</li> 
+				<button data-id="${newOrder._id}" name="submitButton">Delete</button>
+				<button data-id="${newOrder._id}" name="submitButton">Edit</button></div>`);
 } 
 
 function handleError(err){
@@ -76,9 +78,9 @@ function handleError(err){
 }
 function getOrderSuccess(getAllOrders){
 	getAllOrders.forEach(function(orderInfo){
-			$('#placedOrders').append(`<li>${orderInfo.name} ordered a ${orderInfo.cookie.flavor} cookie sandwich with ${orderInfo.icecream.flavor} ice cream!</li> 
-				<button data.id="${orderInfo._id}" name="submitButton" class="btn">Delete</button>
-				<button data.id="${orderInfo._id}" name="submitButton" class="btn">Edit</button>`);
-	})
+			$('#placedOrders').append(`<div id="appendedOrder"><li>${orderInfo.name} ordered a ${orderInfo.cookie.flavor} cookie sandwich with ${orderInfo.icecream.flavor} ice cream!</li> 
+				<button data-id="${orderInfo._id}" name="submitButton" id="deletebtn">Delete</button>
+				<button data-id="${orderInfo._id}" name="submitButton">Edit</button></div>`);
+	});
 
 }
