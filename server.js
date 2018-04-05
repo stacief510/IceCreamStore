@@ -16,8 +16,8 @@ app.get('/api', controllers.api.index);
 app.get('/api/icecreams', controllers.icecream.index);
 app.get('/api/cookies', controllers.cookie.index);
 app.get('/api/orders', controllers.order.index);
-app.get('/api/orders', controllers.order.destroy);
 app.post('/api/orders', controllers.order.create);
+// app.delete('/api/orders/:mongo_id', controllers.order.destroy);
 
 
 app.listen(3000);

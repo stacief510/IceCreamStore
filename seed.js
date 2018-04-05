@@ -75,6 +75,7 @@ db.Cookie.remove({}, function(err, cookie){
 })
 
 db.Order.remove({}, function(err, order){
+
 db.IceCream.remove({}, function(err, icecreams){
 	db.IceCream.create(iceCreamFlavors, function(err, icecream){
 		if(err){
