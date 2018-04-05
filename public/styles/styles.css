@@ -45,6 +45,9 @@ select, input{
 .form-control{
 	width:75%;
 }
+.choices{
+	border-top: double #b6a26b 10px;
+}
 #submitButton{
 	background-color: #8E5B96;
 	border-color: #8E5B96;
@@ -55,6 +58,6 @@ select, input{
 	background-size: cover; 
 	text-align: center;
 	height:300px;
-	margin-bottom: 0;
+	margin-bottom: 10px;
 }
 
