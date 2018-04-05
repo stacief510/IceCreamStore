@@ -16,8 +16,9 @@ app.get('/api', controllers.api.index);
 app.get('/api/icecreams', controllers.icecream.index);
 app.get('/api/cookies', controllers.cookie.index);
 app.get('/api/orders', controllers.order.index);
-app.get('/api/orders/:orderInfo_id', controllers.order.destroy);
+// app.get('/api/orders/:orderInfo_id', controllers.order.destroy);
 app.post('/api/orders', controllers.order.create);
+
 
 
 app.listen(process.env.PORT || 3000);
