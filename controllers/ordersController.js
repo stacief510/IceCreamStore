@@ -27,17 +27,17 @@ db.IceCream.findOne({flavor:req.body.icecream}, function(err, foundIcecream){
 
 }
 
-// function destroy(req, res){
+function destroy(req, res){
 
 
-// db.Order.findByIdAndRemove(req.params.mongo_id, function(err, orderFound){
-// 	if(err){
-// 		console.log(err);
-// 	}
-// 	res.json()
-// })
+db.Order.findByIdAndRemove(req.params.id, function(err, orderFound){
+	if(err){
+		console.log(err);
+	}
+	res.json(orderFound);
+})
 
-// }
+}
 
 
 function update(req, res){
@@ -48,6 +48,6 @@ function update(req, res){
 module.exports = {
 	index: index,
 	create: create,
-	// destroy: destroy
+	destroy: destroy
 	// update: update
 }

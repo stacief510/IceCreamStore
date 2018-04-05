@@ -29,7 +29,7 @@ $('#form').on("submit", function(event){
 	event.preventDefault();
 	var formData = $(this).serialize();
 	console.log(formData)
-	//this.reset();
+	this.reset();
 
 			$.ajax({
 				method: 'POST',
@@ -40,35 +40,21 @@ $('#form').on("submit", function(event){
 			})
 	})
 
-$('#placeOrders').on("click", function(event){
+$('#placedOrders').on("click", ".delete", function(event){
 
-		$(event.target.parentElement).remove()
-
+		console.log($(this).attr('data-mongo-id'));
 		$.ajax({
 			      method:'DELETE',
-			      url:'/api/orders/' + $("#delete").attr('data-mongo-id'),
-			      success : function(data){
-			      	console.log("success");
-			      }
+			      url:'/api/orders/' + $(this).attr('data-mongo-id'), 
+			      success : (data) => {
+			      	$(this).remove();
+			      },
 			      error : handleError
 			    })
-	
-	});
+});
 
 });
 
-
-
-			// $.ajax({
-			//       method:'DELETE',
-			//       url:'/api/orders/' + $("#delete").attr('data-mongo-id'),
-			//       success : function(data){
-			//       	console.log("success");
-			//       }
-			//       error : handleError
-			//     })
-
-	
 
 function handleError(err){
 	console.log(err);
@@ -92,14 +78,15 @@ $(".pickCookie").append(`<option>${cookies.flavor}</option>`)
 }
 function postSuccess(newOrder){
 
-	$('#placeOrders').append(`<div>${newOrder.name} Ordered a ${newOrder.cookie.flavor} 
-		cookie sandwich with ${newOrder.icecream.flavor} ice cream!</li>`)
+	$('#placedOrders').append(`<div class = "delete" data-mongo-id = ${newOrder._id}>${newOrder.name} ordered a ${newOrder.cookie.flavor} 
+		cookie sandwich with ${newOrder.icecream.flavor} ice cream! <button>Delete</button></div>`)
 
 } 
 
 function getOrderSuccess(getAllOrders){
 	getAllOrders.forEach(function(order){
-		$('#placeOrders').append(`<div>${order.name}<button>Delete</button></div>`);
+		$('#placedOrders').append(`<div class= "delete" data-mongo-id = ${order._id}>${order.name} ordered a ${order.cookie.flavor}
+			cookie sandwich with ${order.icecream.flavor} ice cream! <button>Delete</button></div>`);
 	});
 }
 

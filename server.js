@@ -16,7 +16,7 @@ app.get('/api', controllers.api.index);
 app.get('/api/icecreams', controllers.icecream.index);
 app.get('/api/cookies', controllers.cookie.index);
 app.get('/api/orders', controllers.order.index);
-// app.get('/api/orders/:orderInfo_id', controllers.order.destroy);
+app.delete('/api/orders/:id', controllers.order.destroy);
 app.post('/api/orders', controllers.order.create);
 
 
