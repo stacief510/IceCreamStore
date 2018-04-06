@@ -50,23 +50,69 @@ $(document).ready(function() {
             error: handleError
         })
     });
+$('#editOrder').on("submit", function(event){
+    console.log("submitted form!");
+})
 
  $('#placedOrders').on("click", "#edit", function(event) {
-	 	var cookieFlavor= $(this).siblings('.span1').text();
-	 	var icecreamFlavor= $(this).siblings('.span2').text();
-
-     	$(this).siblings('.span1').html(`<input class="editCookieflavor" value="${cookieFlavor}"></input>`);
-    	$(this).siblings('.span2').html(`<input class="editICflavor" value="${icecreamFlavor}"></input>`);
+            $.ajax({
+            method: 'GET',
+            url: '/api/icecreams' ,
+            success: (allIceCreams) => {
+                $.ajax({
+                    method: 'GET',
+                    url: '/api/cookies' ,
+                    success: (allCookies) => {
+                        // console.log(allCookies, allIceCreams);
+                        // console.log(allCookies);
+                        $(this).parent().append(`<form id = "editOrder"><select id = "icecream"></select><select id = "cookies"></select><button>Submit</button></form>`);
+                        allCookies.forEach(function(cookie) {
+                             $("#cookies").append(`<option>${cookie.flavor}</option>`)
+                        });
+                        allIceCreams.forEach(function(icecreams) {
+                            $('#icecream').append(`<option>${icecreams.flavor}</option>`);
+                        });
+                    },
+                    error: handleError
+                });
+            },
+            error: handleError
+    });
 
         // $.ajax({
-        //     method: 'PATCH',
-        //     url: '/api/orders/' + $(this).attr('data-mongo-id'),
-        //     data: {}
-        //     success: (data) => {
-
+        //     method: 'GET',
+        //     url: '/api/icecreams' ,
+        //     success: (allIceCreams) => {
+        //         $.ajax({
+        //             method: 'GET',
+        //             url: '/api/cookies' ,
+        //             success: (allCookies) => {
+        //                 // console.log(allCookies, allIceCreams);
+        //                 // console.log(allCookies);
+        //                 $(this).parent().append(`<select id = "icecream"></select><select id = "cookies"></select>`);
+        //                  allCookies.forEach(function(cookie) {
+        //                      $("#cookies").append(`<option>${cookie.flavor}</option>`)
+        //                 });
+        //                 allIceCreams.forEach(function(icecreams) {
+        //                     $('#icecream').append(`<option>${icecreams.flavor}</option>`);
+        //                 });
+        //             },
+        //             error: handleError
+        //         })
         //     },
         //     error: handleError
         // })
+
+       
+
+
+	 	var cookieFlavor= $(this).siblings('.span1').text();
+	 	var icecreamFlavor= $(this).siblings('.span2').text();
+
+     // 	$(this).siblings('.span1').html(`<input class="editCookieflavor" value="${cookieFlavor}"></input>`);
+    	// $(this).siblings('.span2').html(`<input class="editICflavor" value="${icecreamFlavor}"></input>`);
+
+     
     });
 });//doc ready ending
 
@@ -97,6 +143,7 @@ cookie sandwich with <span class="span2">${newOrder.icecream.flavor}</span> ice 
 }
 
 function getOrderSuccess(getAllOrders) {
+    console.log(getAllOrders);
     getAllOrders.forEach(function(order) {
         $('#placedOrders').append(`<div class= "appendedOrder" data-mongo-id = ${order._id}>${order.name} ordered a <span class="span1">${order.cookie.flavor}</span>
 cookie sandwich with <span class="span2">${order.icecream.flavor}</span> ice cream! <button id="delete">Delete</button><button id='edit'>Edit</button></div>`);
