@@ -52,8 +52,7 @@ $(document).ready(function() {
     });
 
 $('#placedOrders').on("submit", '#editOrder', function(event){
-    // add edit button back in or enable again
-// $('#placedOrders').parents(':eq(2)').on("submit", function(event){
+    $('#edit').removeClass('hidden');
     event.preventDefault();
     var formData = $(this).serialize();
     
@@ -66,13 +65,6 @@ $('#placedOrders').on("submit", '#editOrder', function(event){
             $('.span2').html(`<span>${updatedOrder.icecream.flavor}</span>`);
            
             $('#editOrder').remove(); 
-
-            // updatedOrder.forEach(function(cookie) {
-            //                  $("#cookies").append(`<option>${cookie.flavor}</option>`)
-            //             });
-            // updatedOrder.forEach(function(icecreams) {
-            //                 $('#icecream').append(`<option>${icecreams.flavor}</option>`);
-            //             });
         },
         error: handleError
     });
@@ -80,7 +72,7 @@ $('#placedOrders').on("submit", '#editOrder', function(event){
 });
 
  $('#placedOrders').on("click", "#edit", function(event) {
-    // remove or disable edit button
+    $('#edit').addClass('hidden');
             $.ajax({
             method: 'GET',
             url: '/api/icecreams' ,
