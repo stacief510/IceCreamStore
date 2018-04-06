@@ -50,8 +50,24 @@ $(document).ready(function() {
             error: handleError
         })
     });
-$('#editOrder').on("submit", function(event){
-    console.log("submitted form!");
+
+$('#placedOrders').on("submit", '#editOrder', function(event){
+// $('#placedOrders').parents(':eq(2)').on("submit", function(event){
+    event.preventDefault();
+    console.log("submitted");
+    var formData = $(this).serialize();
+    console.log(formData);
+
+    // write code to get container's data-mongo-id
+    
+    $.ajax({
+        method: 'PUT',
+        url: '/api/orders/' + SOMEORDERID,
+        data: formData,
+        success: function(updatedOrder) { console.log('Your order updated! ' + updatedOrder) }
+        error: handleError
+    })
+
 })
 
  $('#placedOrders').on("click", "#edit", function(event) {
@@ -65,7 +81,7 @@ $('#editOrder').on("submit", function(event){
                     success: (allCookies) => {
                         // console.log(allCookies, allIceCreams);
                         // console.log(allCookies);
-                        $(this).parent().append(`<form id = "editOrder"><select id = "icecream"></select><select id = "cookies"></select><button>Submit</button></form>`);
+                        $(this).parent().append(`<form id = "editOrder"><select name="icecream" id = "icecream"></select><select name="cookie" id = "cookies"></select><button id ='save'>Submit</button></form>`);
                         allCookies.forEach(function(cookie) {
                              $("#cookies").append(`<option>${cookie.flavor}</option>`)
                         });
