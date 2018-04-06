@@ -1,53 +1,55 @@
 var db = require('../models');
 
-function index(req, res){
-db.Order.find({}, function(err, order){
-	if(err){
-		res.send(err);
-	}
-	res.json(order);
-})
+function index(req, res) {
+    db.Order.find({}, function(err, order) {
+        if (err) {
+            res.send(err);
+        }
+        res.json(order);
+    })
 
 }
 
-function create(req, res){
-db.IceCream.findOne({flavor:req.body.icecream}, function(err, foundIcecream){
-	db.Cookie.findOne({flavor: req.body.cookie}, function(err, foundCookie){
-		// console.log(foundIcecream);
-		// console.log(foundCookie);
-		// console.log(req.body);
-		db.Order.create({name: req.body.name, cookie: foundCookie, icecream: foundIcecream }, function(err, order){
-			if(err){
-				console.log(err);
-			}
-			res.json(order);
-		})
-	})
-})
+function create(req, res) {
+    db.IceCream.findOne({ flavor: req.body.icecream }, function(err, foundIcecream) {
+        db.Cookie.findOne({ flavor: req.body.cookie }, function(err, foundCookie) {
+            db.Order.create({ name: req.body.name, cookie: foundCookie, icecream: foundIcecream }, function(err, order) {
+                if (err) {
+                    console.log(err);
+                }
+                res.json(order);
+            });
+        });
+    });
 
 }
 
-function destroy(req, res){
+function destroy(req, res) {
 
 
-db.Order.findByIdAndRemove(req.params.id, function(err, orderFound){
-	if(err){
-		console.log(err);
-	}
-	res.json(orderFound);
-})
+    db.Order.findByIdAndRemove(req.params.id, function(err, orderFound) {
+        if (err) {
+            console.log(err);
+        }
+        res.json(orderFound);
+    });
 
 }
 
 
-function update(req, res){
-
+function update(req, res) {
+    db.Order.findByIdAndUpdate(req.params.id, function(err, updateOrder) {
+        if (err) {
+            console.log(err);
+        }
+        res.json(updateOrder);
+    });
 }
 
 
 module.exports = {
-	index: index,
-	create: create,
-	destroy: destroy
-	// update: update
+    index: index,
+    create: create,
+    destroy: destroy,
+    update: update
 }
