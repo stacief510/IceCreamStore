@@ -28,7 +28,9 @@ li{
 	font-size: 1.5rem;
 	font-weight: 600;
 }
-
+.bases{
+	left:200px;
+}
 .formStyles{
 	border: 1px black solid;
     padding: 15px;
@@ -73,7 +75,10 @@ button{
 }
 
 img{
-	
+
+	position: absolute;
+	top: 30%;
+	left: 25%;	
 }
 
 .hidden{

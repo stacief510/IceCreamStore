@@ -84,7 +84,7 @@ $('#placedOrders').on("submit", '#editOrder', function(event){
                         console.log('i clicked the edit button')
                         console.log(allCookies, allIceCreams);
                         // console.log(allCookies);
-                        $(this).parent().append(`<form id="editOrder"><select name="icecream" id = "icecream"></select><select name="cookie" id = "cookies"></select><button id ='save'>Submit</button></form>`);
+                        $(this).parent().append(`<form id="editOrder"><label>Cookie:</label><select name="cookie" id = "cookies"></select><br><label>IceCream:</label><select name="icecream" id = "icecream"></select><button id ='save'>Submit</button></form>`);
                         allCookies.forEach(function(cookie) {
                              $("#cookies").append(`<option>${cookie.flavor}</option>`)
                         });
