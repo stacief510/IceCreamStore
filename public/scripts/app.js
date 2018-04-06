@@ -52,25 +52,35 @@ $(document).ready(function() {
     });
 
 $('#placedOrders').on("submit", '#editOrder', function(event){
+    // add edit button back in or enable again
 // $('#placedOrders').parents(':eq(2)').on("submit", function(event){
     event.preventDefault();
-    console.log("submitted");
     var formData = $(this).serialize();
-    console.log(formData);
-
-    // write code to get container's data-mongo-id
     
     $.ajax({
         method: 'PUT',
-        url: '/api/orders/' + SOMEORDERID,
+        url: '/api/orders/' + $(this).parent().attr('data-mongo-id'),
         data: formData,
-        success: function(updatedOrder) { console.log('Your order updated! ' + updatedOrder) }
-        error: handleError
-    })
+        success: (updatedOrder) => { 
+            $('.span1').html(`<span>${updatedOrder.cookie.flavor}</span>`);
+            $('.span2').html(`<span>${updatedOrder.icecream.flavor}</span>`);
+           
+            $('#editOrder').remove(); 
 
-})
+            // updatedOrder.forEach(function(cookie) {
+            //                  $("#cookies").append(`<option>${cookie.flavor}</option>`)
+            //             });
+            // updatedOrder.forEach(function(icecreams) {
+            //                 $('#icecream').append(`<option>${icecreams.flavor}</option>`);
+            //             });
+        },
+        error: handleError
+    });
+
+});
 
  $('#placedOrders').on("click", "#edit", function(event) {
+    // remove or disable edit button
             $.ajax({
             method: 'GET',
             url: '/api/icecreams' ,
@@ -79,9 +89,10 @@ $('#placedOrders').on("submit", '#editOrder', function(event){
                     method: 'GET',
                     url: '/api/cookies' ,
                     success: (allCookies) => {
-                        // console.log(allCookies, allIceCreams);
+                        console.log('i clicked the edit button')
+                        console.log(allCookies, allIceCreams);
                         // console.log(allCookies);
-                        $(this).parent().append(`<form id = "editOrder"><select name="icecream" id = "icecream"></select><select name="cookie" id = "cookies"></select><button id ='save'>Submit</button></form>`);
+                        $(this).parent().append(`<form id="editOrder"><select name="icecream" id = "icecream"></select><select name="cookie" id = "cookies"></select><button id ='save'>Submit</button></form>`);
                         allCookies.forEach(function(cookie) {
                              $("#cookies").append(`<option>${cookie.flavor}</option>`)
                         });
@@ -95,35 +106,9 @@ $('#placedOrders').on("submit", '#editOrder', function(event){
             error: handleError
     });
 
-        // $.ajax({
-        //     method: 'GET',
-        //     url: '/api/icecreams' ,
-        //     success: (allIceCreams) => {
-        //         $.ajax({
-        //             method: 'GET',
-        //             url: '/api/cookies' ,
-        //             success: (allCookies) => {
-        //                 // console.log(allCookies, allIceCreams);
-        //                 // console.log(allCookies);
-        //                 $(this).parent().append(`<select id = "icecream"></select><select id = "cookies"></select>`);
-        //                  allCookies.forEach(function(cookie) {
-        //                      $("#cookies").append(`<option>${cookie.flavor}</option>`)
-        //                 });
-        //                 allIceCreams.forEach(function(icecreams) {
-        //                     $('#icecream').append(`<option>${icecreams.flavor}</option>`);
-        //                 });
-        //             },
-        //             error: handleError
-        //         })
-        //     },
-        //     error: handleError
-        // })
 
-       
-
-
-	 	var cookieFlavor= $(this).siblings('.span1').text();
-	 	var icecreamFlavor= $(this).siblings('.span2').text();
+	 	// var cookieFlavor= $(this).siblings('.span1').text();
+	 	// var icecreamFlavor= $(this).siblings('.span2').text();
 
      // 	$(this).siblings('.span1').html(`<input class="editCookieflavor" value="${cookieFlavor}"></input>`);
     	// $(this).siblings('.span2').html(`<input class="editICflavor" value="${icecreamFlavor}"></input>`);

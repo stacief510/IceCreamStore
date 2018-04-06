@@ -38,13 +38,17 @@ function destroy(req, res) {
 
 
 function update(req, res) {
-    db.Order.findByIdAndUpdate(req.params.id, function(err, updateOrder) {
-        if (err) {
-            console.log(err);
-        }
-        res.json(updateOrder);
-    });
-}
+    db.IceCream.findOne({flavor: req.body.icecream},function(err, foundIcecream){
+        db.Cookie.findOne({flavor: req.body.cookie}, function(err, foundCookie){
+            db.Order.findByIdAndUpdate(req.params.id, {cookie: foundCookie, icecream: foundIcecream}, {new: true}, function(err, updateOrder) {
+                    if (err) {
+                        console.log(err);
+                    }
+                        res.json(updateOrder);
+                    });
+                });
+        });
+    }
 
 
 module.exports = {

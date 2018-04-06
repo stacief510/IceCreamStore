@@ -18,7 +18,7 @@ app.get('/api/cookies', controllers.cookie.index);
 app.get('/api/orders', controllers.order.index);
 app.delete('/api/orders/:id', controllers.order.destroy);
 app.post('/api/orders', controllers.order.create);
-app.patch('/api/orders/:id', controllers.order.update);
+app.put('/api/orders/:id', controllers.order.update);
 
 
 
