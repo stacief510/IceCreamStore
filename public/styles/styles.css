@@ -29,13 +29,17 @@ li{
 	font-weight: 600;
 }
 
-.formField{
+.formStyles{
 	border: 1px black solid;
     padding: 15px;
     background-color: rgba(182, 162, 107, .3);
 }
 form, legend{
 	margin-left: 20%;
+}
+.appendedOrder{
+	margin-top: 10px;
+	padding:5px;
 }
 select, input{
 	width:75%;
@@ -52,6 +56,13 @@ select, input{
 	background-color: #8E5B96;
 	border-color: #8E5B96;
 	margin-left: 1%;
+}
+button{
+	background-color: #8E5B96;
+	border-color: #8E5B96;
+	color: #fff;
+	border-radius: 4px;
+	margin:1px 8px;
 }
 .jumbotron{
 	background-image: url('../images/icecreamsammies.jpg');
