@@ -15,6 +15,6 @@ Welcome to our ice cream sandwich shop! You can place an order for a customized 
 1. Visit localhost:3000 to view the site.
 
 **Contributors:**
-Megha - [GitHub] https://github.com/meghamenon
-Stacie - [GitHub] https://github.com/stacief510
+* Megha - [GitHub] https://github.com/meghamenon
+* Stacie - [GitHub] https://github.com/stacief510
 	
