@@ -52,6 +52,7 @@ $(document).ready(function() {
     });
 
 $('#placedOrders').on("submit", '#editOrder', function(event){
+
     $('#edit').removeClass('hidden');
     event.preventDefault();
     var formData = $(this).serialize();
@@ -61,8 +62,18 @@ $('#placedOrders').on("submit", '#editOrder', function(event){
         url: '/api/orders/' + $(this).parent().attr('data-mongo-id'),
         data: formData,
         success: (updatedOrder) => { 
-            $('.span1').html(`<span>${updatedOrder.cookie.flavor}</span>`);
+            debugger
+
+            var idToLookFor = updatedOrder._id;
+            $('.appendedOrder').find(idToLookFor)
+            // then change the html 
+            debugger
+
+            // console.log(this.parent().attr('data-mongo-id'));
+
+            $('').html(`<span>${updatedOrder.cookie.flavor}</span>`);
             $('.span2').html(`<span>${updatedOrder.icecream.flavor}</span>`);
+
            
             $('#editOrder').remove(); 
         },
@@ -72,6 +83,7 @@ $('#placedOrders').on("submit", '#editOrder', function(event){
 });
 
  $('#placedOrders').on("click", "#edit", function(event) {
+    
     $('#edit').addClass('hidden');
             $.ajax({
             method: 'GET',

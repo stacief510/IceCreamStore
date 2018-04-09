@@ -38,6 +38,7 @@ function destroy(req, res) {
 
 
 function update(req, res) {
+    console.log(1111, req.body)
     db.IceCream.findOne({flavor: req.body.icecream},function(err, foundIcecream){
         db.Cookie.findOne({flavor: req.body.cookie}, function(err, foundCookie){
             db.Order.findByIdAndUpdate(req.params.id, {cookie: foundCookie, icecream: foundIcecream}, {new: true}, function(err, updateOrder) {
