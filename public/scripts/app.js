@@ -52,8 +52,7 @@ $(document).ready(function() {
     });
 
 $('#placedOrders').on("submit", '#editOrder', function(event){
-
-    $('#edit').removeClass('hidden');
+    $('.edit').removeClass('hidden');
     event.preventDefault();
     var formData = $(this).serialize();
     
@@ -62,17 +61,15 @@ $('#placedOrders').on("submit", '#editOrder', function(event){
         url: '/api/orders/' + $(this).parent().attr('data-mongo-id'),
         data: formData,
         success: (updatedOrder) => { 
-            debugger
-
             var idToLookFor = updatedOrder._id;
-            $('.appendedOrder').find(idToLookFor)
-            // then change the html 
-            debugger
+                
+            $('.appendedOrder').find(idToLookFor);
 
-            // console.log(this.parent().attr('data-mongo-id'));
+            var $el = $(`[data-mongo-id=${idToLookFor}]`);
+           
 
-            $('').html(`<span>${updatedOrder.cookie.flavor}</span>`);
-            $('.span2').html(`<span>${updatedOrder.icecream.flavor}</span>`);
+          $($el).find('.span1').html(`<span>${updatedOrder.cookie.flavor}</span>`);
+          $($el).find('.span2').html(`<span>${updatedOrder.icecream.flavor}</span>`);
 
            
             $('#editOrder').remove(); 
@@ -82,9 +79,9 @@ $('#placedOrders').on("submit", '#editOrder', function(event){
 
 });
 
- $('#placedOrders').on("click", "#edit", function(event) {
+ $('#placedOrders').on("click", ".edit", function(event) {
     
-    $('#edit').addClass('hidden');
+    $('.edit').addClass('hidden');
             $.ajax({
             method: 'GET',
             url: '/api/icecreams' ,
@@ -143,7 +140,7 @@ function handleSucc(allMyCookies) {
 
 function postSuccess(newOrder) {
     $('#placedOrders').append(`<div class = "appendedOrder" data-mongo-id = ${newOrder._id}>${newOrder.name} ordered a <span class="span1">${newOrder.cookie.flavor}</span> 
-cookie sandwich with <span class="span2">${newOrder.icecream.flavor}</span> ice cream! <button id="delete">Delete</button><button id='edit'>Edit</button></div>`)
+cookie sandwich with <span class="span2">${newOrder.icecream.flavor}</span> ice cream! <button id="delete">Delete</button><button class='edit'>Edit</button></div>`)
 
 }
 
@@ -151,6 +148,6 @@ function getOrderSuccess(getAllOrders) {
     console.log(getAllOrders);
     getAllOrders.forEach(function(order) {
         $('#placedOrders').append(`<div class= "appendedOrder" data-mongo-id = ${order._id}>${order.name} ordered a <span class="span1">${order.cookie.flavor}</span>
-cookie sandwich with <span class="span2">${order.icecream.flavor}</span> ice cream! <button id="delete">Delete</button><button id='edit'>Edit</button></div>`);
+cookie sandwich with <span class="span2">${order.icecream.flavor}</span> ice cream! <button id="delete">Delete</button><button class='edit'>Edit</button></div>`);
     });
 }
