@@ -138,7 +138,7 @@ cookie sandwich with <span class="span2">${newOrder.icecream.flavor}</span> ice 
 function getOrderSuccess(getAllOrders) {
     console.log(getAllOrders);
     getAllOrders.forEach(function(order) {
-        $('#placedOrders').append(`<div class= "appendedOrder" data-mongo-id = ${order._id}><li>${order.name} ordered a <span class="span1">${order.cookie.flavor}</span>
-cookie sandwich with <span class="span2">${order.icecream.flavor}</span> ice cream! <button id="delete">Delete</button><button id='edit'>Edit</button></li></div>`);
+        $('#placedOrders').append(`<div class= "appendedOrder" data-mongo-id = ${order._id}>${order.name} ordered a <span class="span1">${order.cookie.flavor}</span>
+cookie sandwich with <span class="span2">${order.icecream.flavor}</span> ice cream! <button id="delete">Delete</button><button id='edit'>Edit</button></div>`);
     });
 }
